@@ -122,10 +122,9 @@ while (kör)
 
 
                     case "2":
-                        Console.Clear();
-                        Console.WriteLine("TODO: Visa andra användares varor");
-                        Console.ReadKey();
+                        konton.VisaAndrasVaror(namn);
                         break;
+                        
 
                     case "3":
                         Console.Clear();

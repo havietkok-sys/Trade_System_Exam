@@ -73,6 +73,47 @@ namespace Kontohantering
             Console.WriteLine("Användare hittades inte.");
         }
 
+//  Visa varor
+
+
+
+        public void VisaAndrasVaror(string inloggadAnvändare)
+        {
+            Console.Clear();
+            Console.WriteLine("=== Andra användares varor ===");
+
+            bool hittadeNågot = false;
+
+            foreach (Användare person in användarLista)
+            {
+                if (person.användarnamn != inloggadAnvändare)
+                {
+                    if (person.varor.Count > 0)
+                    {
+                        Console.WriteLine($"\n{person.användarnamn}s varor:");
+                        foreach (Vara v in person.varor)
+                        {
+                            Console.WriteLine(" - " + v.namn);
+                        }
+                        hittadeNågot = true;
+                    }
+                }
+            }
+
+            if (!hittadeNågot)
+            {
+                Console.WriteLine("\nInga andra användare har några varor ännu.");
+            }
+
+            Console.WriteLine("\nTryck på valfri tangent för att återgå.");
+            Console.ReadKey();
+        }
+
+
+// Visa varor
+
+
+
 // Sparnings koden
     public void SparaData()
     {
