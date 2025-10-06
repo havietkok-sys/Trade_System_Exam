@@ -1,10 +1,14 @@
 ﻿using Kontohantering;
+using byte_system;
 
 // Får se hur om jag kör en klass till för Själva trade systemet.
 
 Kontohanterare konton = new Kontohanterare();
 //  Hämtar datan
 konton.LaddaData();
+
+// Nya bytes systemet
+ByteSystem bytes = new ByteSystem();
 
 bool kör = true;
 
@@ -126,23 +130,28 @@ while (kör)
                         break;
                         
 
-                    case "3":
-                        Console.Clear();
-                        Console.WriteLine("TODO: Skicka bytesförfrågan");
-                        Console.ReadKey();
-                        break;
+                      case "3":
+                          Console.Clear();
+                          Console.WriteLine("=== Skicka bytesförfrågan ===");
+                          Console.Write("Vem vill du skicka till? ");
+                          string mottagare = Console.ReadLine();
+                          Console.Write("Vilken vara vill du begära? ");
+                          string begärd = Console.ReadLine();
+                          Console.Write("Vilken vara erbjuder du? ");
+                          string erbjuden = Console.ReadLine();
 
-                    case "4":
-                        Console.Clear();
-                        Console.WriteLine("TODO: Visa mottagna förfrågningar");
-                        Console.ReadKey();
-                        break;
+                          bytes.SkickaFörfrågan(namn, mottagare, begärd, erbjuden);
+                          Console.ReadKey();
+                          break;
 
-                    case "5":
-                        Console.Clear();
-                        Console.WriteLine("TODO: Visa genomförda byten");
-                        Console.ReadKey();
-                        break;
+                      case "4":
+                          bytes.VisaMottagna(namn);
+                          break;
+
+                      case "5":
+                          bytes.VisaGenomförda(namn);
+                          break;
+
 
                     case "6":
                         inloggad = false;
