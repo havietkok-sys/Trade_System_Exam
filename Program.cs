@@ -3,6 +3,9 @@
 // Får se hur om jag kör en klass till för Själva trade systemet.
 
 Kontohanterare konton = new Kontohanterare();
+//  Hämtar datan
+konton.LaddaData();
+
 bool kör = true;
 
 // Ny klass för loggin 
@@ -98,9 +101,25 @@ while (kör)
                 {
                     case "1":
                         Console.Clear();
-                        Console.WriteLine("TODO: Ladda upp vara");
+                        Console.WriteLine("=== Lägg till en vara ===");
+                        Console.Write("Ange namn på varan: ");
+                        string varunamn = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(varunamn))
+                        {
+                        Console.WriteLine("Du måste ange ett namn!");
+                        }
+                        else
+                        {
+                        konton.LäggTillVara(namn, varunamn);
+                        }
+
+                        Console.WriteLine("\nTryck på valfri tangent för att fortsätta...");
                         Console.ReadKey();
                         break;
+                    
+                    
+
 
                     case "2":
                         Console.Clear();
